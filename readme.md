@@ -3,6 +3,16 @@
 This repo contains the *Playground* environment from the [Language as a Cognitive Tool to Imagine Goals inCuriosity-Driven Exploration](https://arxiv.org/pdf/2002.09253.pdf) paper.
 In *Playground*, the agent evolves in a 2D scene with objects that are procedurally generated. In the current version, the agent can navigate in 2D, grasp and move objects.
 
+
+<p align="center">
+<img src="./playground/readme_img/screen.png" width="35%">
+</p>
+<p align="center">
+ <em>The Playground environment, with three objects.</em>
+</p>
+
+
+
 **The agent**
 The agent is materialized by a circle (represented by the hand). It can move in 2D directions and grasp/release (3 actions).
 
