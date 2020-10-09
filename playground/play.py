@@ -11,15 +11,20 @@ ENV_NAME = 'PlaygroundNavigationHuman-v1'
 from playground.reward_function import sample_descriptions_from_state, get_reward_from_state
 from playground.descriptions import generate_all_descriptions
 from playground.env_params import get_env_params
+"""
+Playing script. Control the agent with the arrows, close the gripper with the space bar.
+"""
+
 env = gym.make(ENV_NAME, reward_screen=False, viz_data_collection=True)
 pygame.init()
-
 
 env_params = get_env_params()
 train_descriptions, test_descriptions, extra_descriptions = generate_all_descriptions(env_params)
 all_descriptions = train_descriptions +  test_descriptions
 
-goal_str = 'Grow red dog'  # np.random.choice(train_descriptions)
+# Select the goal to generate the scene.
+goal_str = np.random.choice(all_descriptions)
+
 env.reset()
 env.unwrapped.reset_with_goal(goal_str)
 
@@ -51,12 +56,13 @@ while True:
 
     out = env.step(action)
     env.render()
-    # print(env.unwrapped.objects)
+
+    # Sample descriptions of the current state
     train_descr, test_descr, extra_descr = sample_descriptions_from_state(out[0], env.unwrapped.params)
     descr = train_descr + test_descr
     print(descr)
 
-
+    # assert that the reward function works, should give positive rewards for descriptions sampled, negative for others.
     for d in descr:
         assert get_reward_from_state(out[0], d, env_params)
     for d in np.random.choice(list(set(all_descriptions) - set(descr)), size=20):

@@ -694,7 +694,7 @@ def generate_objects(objects_descr, params):
     for o in objects_descr:
         assert o['types'] in obj_type_to_obj.keys(), "The object '{}' is not registered in the obj_type_to_obj dict".format(o['types'])
 
-    objs = [obj_type_to_obj[o['types']](o, o_id_int, params) for o, o_id, o_id_int in zip(objects_descr, range(len(objects_descr)))]
+    objs = [obj_type_to_obj[o['types']](o, o_id_int, params) for o, o_id_int in zip(objects_descr, range(len(objects_descr)))]
 
     # give each object the reference to other objects in the scene and resample their position so that they are not in contact.
     for o in objs:

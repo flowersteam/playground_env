@@ -232,7 +232,7 @@ def sample_descriptions_from_state(state, params):
             print(descr)
             raise ValueError
 
-    return train_descr.copy(), test_descr.copy(), extra_descriptions.copy()
+    return train_descr.copy(), test_descr.copy(), extra_descr.copy()
 
 def get_reward_from_state(state, goal, params):
     """

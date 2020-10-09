@@ -11,7 +11,7 @@ def get_env_params(max_nb_objects=3,
                    epsilon_initial_pos=0.3,
                    screen_size=800,
                    next_to_epsilon=0.3,
-                   attribute_combinations=True,
+                   attribute_combinations=False,
                    obj_size_update=0.04,
                    render_mode=True
                    ):
@@ -84,13 +84,16 @@ def get_env_params(max_nb_objects=3,
                       relative_sizes=relative_sizes,
                       relative_positions=relative_positions)
 
-    adjective_attributes = ()
+    # Get the list of admissible attributes
     name_attributes = ()
-    for k in attributes.keys():
-        if k in ('type', 'category'):
-            name_attributes += attributes[k]
-        else:
-            adjective_attributes += attributes[k]
+    adjective_attributes = ()
+    for att_type in attributes.keys():
+        if att_type in admissible_attributes:
+            if att_type in ('types', 'categories'):
+                name_attributes += attributes[att_type]
+            else:
+                adjective_attributes += attributes[att_type]
+
 
     for att in admissible_attributes:
         assert att in attributes.keys()

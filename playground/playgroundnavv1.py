@@ -38,7 +38,7 @@ class PlayGroundNavigationV1(gym.Env):
                  epsilon_initial_pos=0.3,  # epsilon to sample initial positions
                  screen_size=800,  # size of the visualization screen
                  next_to_epsilon=0.3,  # define the area to qualify an object as 'next to' another.
-                 attribute_combinations=True,
+                 attribute_combinations=False,
                  obj_size_update=0.04,
                  render_mode=False
                  ):
