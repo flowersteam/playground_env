@@ -11,7 +11,7 @@ Objects are represented by their type (one-hot encoding), their position (2D), t
 language, they can be referred to by any of their attributes (e.g. color, size, type etc.). The image below lists all already implemented objects.
 
 <p align="center">
-<img src="readme_img/categories.png" width="80%">
+<img src="./playground/readme_img/categories.png" width="80%">
 </p>
 <p align="center">
  <em>Objects already implemented in Playground.</em>
