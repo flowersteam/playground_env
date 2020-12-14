@@ -1,7 +1,9 @@
 # Playground Env
 
-This repo contains the *Playground* environment from the [Language as a Cognitive Tool to Imagine Goals inCuriosity-Driven Exploration](https://arxiv.org/pdf/2002.09253.pdf) paper.
-In *Playground*, the agent evolves in a 2D scene with objects that are procedurally generated. In the current version, the agent can navigate in 2D, grasp and move objects.
+
+The *Playground* environment is designed **to study systematic generalization in language-conditioned RL agents**. The agent evolves in 2D scene with procedurally-generated objects that are characterized by their color (rgb), size, type and category. It is made easy to add more objects, categories, attributes, to add object- or category-specific interactions, goal descriptions, etc. One defining feature of *Playground* is that it separates the study of systematic generalization from the study of exploration, by reducing the need for efficient navigation exploration (2D world, with close-by objects). However, this does not turn *Playground* into a toy problem. The number of goal descriptions can easily be extended by adding more objects, attributes, cateogries, synonyms, etc. Each scene can sample a different number of objects, and they are procedurally generated (continuous size, color and position). The problem can be made arbitrarily complicated for the agent to understand goals, and learn to achieve them using the right objects. It simply removes the extra burden of exploratory-demanding navigation.
+
+In the current version from the the [Language as a Cognitive Tool to Imagine Goals in Curiosity-Driven Exploration](https://arxiv.org/pdf/2002.09253.pdf) paper, the agent can navigate in 2D, grasp and move objects. In this paper, we study 5 types of generalization, including generalization to new combination of object and attribute (e.g. grasp red cat); the transfer of knowledge from one predicate to the other (e.g. understanding to grow plants from grasping plants);   or category understanding (e.g. understanding which objects are animals from 'grow any cat', 'grow any dog' and 'grow any animal' goals and transferring this knowledge to 'grasp any animal'), see the paper for detailed explanations.
 
 
 <p align="center">
