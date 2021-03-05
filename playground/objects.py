@@ -24,6 +24,7 @@ class Thing:
         self.params = params
         self.min_max_sizes = params['min_max_sizes']
         self.admissible_attributes = params['admissible_attributes']
+        self.relational_frame = params['relational_frame']
         self.adm_rel_attributes = [a for a in self.admissible_attributes if 'relative' in a]
 
         self.agent_size = params['agent_size']
@@ -169,6 +170,8 @@ class Thing:
         if len(self.scene_objects) > 0:
             object_features = [o.get_features() for o in self.scene_objects]
             for att in all_attributes:
+                if att == 'relative_positions' and self.relational_frame  == 'init':
+                    object_features = [o.object_initial_attributes for o in self.scene_objects]
                 self.object_attributes[att] = self.get_attributes_functions[att](object_features, self.object_id_int)
 
     # Get type one hot code

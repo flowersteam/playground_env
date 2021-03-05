@@ -11,16 +11,19 @@ ENV_NAME = 'PlaygroundNavigationHuman-v1'
 from playground.reward_function import sample_descriptions_from_state, get_reward_from_state
 from playground.descriptions import generate_all_descriptions
 from playground.env_params import get_env_params
+
 """
 Playing script. Control the agent with the arrows, close the gripper with the space bar.
 """
+env_params = get_env_params()
 
-env = gym.make(ENV_NAME, reward_screen=False, viz_data_collection=True)
+env = gym.make(ENV_NAME, admissible_actions=env_params['admissible_actions'],
+               admissible_attributes=env_params['admissible_attributes'],
+               relational_frame=env_params['relational_frame'], reward_screen=False, viz_data_collection=True)
 pygame.init()
 
-env_params = get_env_params()
 train_descriptions, test_descriptions, extra_descriptions = generate_all_descriptions(env_params)
-all_descriptions = train_descriptions +  test_descriptions
+all_descriptions = train_descriptions + test_descriptions
 
 # Select the goal to generate the scene.
 goal_str = np.random.choice(all_descriptions)
@@ -66,6 +69,6 @@ while True:
     for d in descr:
         assert get_reward_from_state(out[0], d, env_params)
     for d in np.random.choice(list(set(all_descriptions) - set(descr)), size=20):
+        if get_reward_from_state(out[0], d, env_params):
+            stop = 1
         assert not get_reward_from_state(out[0], d, env_params)
-
-

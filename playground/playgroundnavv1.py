@@ -31,6 +31,7 @@ class PlayGroundNavigationV1(gym.Env):
                  random_nb_obj=False,
                  admissible_actions=('Move', 'Grasp', 'Grow'),  # which types of actions are admissible
                  admissible_attributes=('colors', 'categories', 'types'),#, 'relative_sizes', 'shades', 'relative_shades', 'sizes', 'relative_positions'),
+                 relational_frame='current',
                  # which object attributes
                  # can be used
                  min_max_sizes=((0.2, 0.25), (0.25, 0.3)),  # ranges of sizes of objects (small and large ones)
@@ -46,6 +47,7 @@ class PlayGroundNavigationV1(gym.Env):
         self.params = get_env_params(max_nb_objects=max_nb_objects,
                                      admissible_actions=admissible_actions,
                                      admissible_attributes=admissible_attributes,
+                                     relational_frame=relational_frame,
                                      min_max_sizes=min_max_sizes,
                                      agent_size=agent_size,
                                      epsilon_initial_pos=epsilon_initial_pos,
