@@ -218,7 +218,6 @@ def sample_descriptions_from_state(state, params):
 
         descriptions += get_extra_grow_descriptions(get_supply_contact, initial_state, current_state, params, obj_attributes, sort_attributes, combine_two,
                                                          check_if_relative)
-    print('-> ', descriptions)
     train_descr = []
     test_descr = []
     extra_descr = []
